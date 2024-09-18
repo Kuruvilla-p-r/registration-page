@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center mt-5" style="background-color: rgb(205, 223, 255); width: 300px; height: 340px; margin: auto; border-radius: 10px;">
+    <form (ngSubmit)="onSubmit()" #loginform="ngForm">
+        <div class="mb-3 mt-3">
+            <h2 class="text-center mt-2">
+                LOGIN
+            </h2>
+            <!-- email -->
+            <label for="email" class="form-label">Email address</label>
+            <input 
+            [(ngModel)]="email" #inputEmail="ngModel" name="email" type="email" class="form-control" id="email" required email placeholder="Enter your email" autocomplete="new-password">
+            <div class="error" *ngIf="inputEmail.invalid && inputEmail.touched">
+                <span *ngIf="inputEmail.errors?.['required']">Email required</span>
+                <span *ngIf="inputEmail.errors?.['email']">Please enter a Valid</span>
+            </div>
+        </div>
+        <!-- password -->
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" #inputPassword="ngModel" placeholder="Enter your Password" autocomplete="new-password" required minlength="6">
+            <div *ngIf="inputPassword.invalid && inputPassword.touched">
+                <span *ngIf="inputPassword.errors?.['required']">Password Required</span>
+                <span *ngIf="inputPassword.errors?.['minlength']">Check Password</span>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary" [disabled]="loginform.invalid" routerLink="/welcome">Submit</button>
+        </div>
+        <div class="text-center mt-2">
+            <a routerLink="/register" style="text-decoration: none;"><span>New here? Register</span></a>
+        </div>
+    </form>
+</div>
