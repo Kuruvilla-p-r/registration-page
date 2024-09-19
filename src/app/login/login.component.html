@@ -1,11 +1,11 @@
-<div class="d-flex justify-content-center mt-5" style="background-color: rgb(205, 223, 255); width: 300px; height: 340px; margin: auto; border-radius: 10px;">
+<div class="d-flex justify-content-center mt-5" style="background-color: rgb(37, 38, 40); width: 300px; height: 360px; margin: auto; border-radius: 10px;">
     <form (ngSubmit)="onSubmit()" #loginform="ngForm">
         <div class="mb-3 mt-3">
-            <h2 class="text-center mt-2">
+            <h2 class="text-center mt-2" style="color: rgb(197, 8, 197);">
                 LOGIN
             </h2>
             <!-- email -->
-            <label for="email" class="form-label">Email address</label>
+            <label for="email" class="form-label" style="color: rgb(197, 8, 197);">Email address</label>
             <input 
             [(ngModel)]="email" #inputEmail="ngModel" name="email" type="email" class="form-control" id="email" required email placeholder="Enter your email" autocomplete="new-password">
             <div class="error" *ngIf="inputEmail.invalid && inputEmail.touched">
@@ -15,7 +15,7 @@
         </div>
         <!-- password -->
         <div class="mb-3">
-            <label class="form-label">Password</label>
+            <label class="form-label" style="color: rgb(197, 8, 197);">Password</label>
             <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" #inputPassword="ngModel" placeholder="Enter your Password" autocomplete="new-password" required minlength="6">
             <div *ngIf="inputPassword.invalid && inputPassword.touched">
                 <span *ngIf="inputPassword.errors?.['required']">Password Required</span>
@@ -23,10 +23,10 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary" [disabled]="loginform.invalid" routerLink="/welcome">Submit</button>
+            <button type="submit" class="btn btn-dark" [disabled]="loginform.invalid" routerLink="/welcome">Submit</button>
         </div>
         <div class="text-center mt-2">
-            <a routerLink="/register" style="text-decoration: none;"><span>New here? Register</span></a>
+            <a routerLink="/register" style="text-decoration: none; color: rgb(197, 8, 197);"><span>New here? Register</span></a>
         </div>
     </form>
 </div>

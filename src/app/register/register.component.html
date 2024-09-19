@@ -1,15 +1,180 @@
-<div class="row mx-3 mt-5">
-    <div class="col-md-2 text-center">
-            <img src="https://th.bing.com/th/id/OIP.0DpnDJy183uUSHxI0sIN7wHaIr?w=874&h=1024&rs=1&pid=ImgDetMain" width="50px" height="50px" alt="">
-                <h5>User</h5>
-                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, neque accusantium minus 
-                    reiciendis error ullam quam debitis vero doloribus recusandae
-                     dicta repellendus ratione quia assumenda amet facilis eius adipisci nihil.</p>
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <div class="row mx-3 mt-5">
+        <div class="col-md-2 text-center">
+                <img src="https://www.krishnakantyadav.com/img/avatar-5.png" width="100px" height="100px" alt="">
+                    <h2 style="color: rgb(197, 8, 197);">User</h2>
+                    <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, neque accusantium minus 
+                        reiciendis error ullam quam debitis vero doloribus recusandae
+                         dicta repellendus ratione quia assumenda amet facilis eius adipisci nihil.</p>
+        </div>
+        <div class="col-md-5">
+            <h2 style="color: rgb(197, 8, 197);"><b>User Details</b></h2>
+            <div>
+                <!-- Name -->
+                <div>
+                    <label for="" class="text-secondary" >Full Name*</label>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                          
+                          <input [(ngModel)]="name" #inputname="ngModel" name="name" required pattern="[a-zA-Z ]*" matInput placeholder="" >
+                        </mat-form-field>
+                        <div class="error" style="margin-top: -15px;" *ngIf="inputname.invalid && inputname.touched">
+                            <span *ngIf="inputname.errors?.['required']" class="text-danger">Please enter your name</span>
+                            <span *ngIf="inputname.errors?.['pattern']" class="text-danger">Type in letters</span>
+                        </div>
+                      </form>
+                </div>
+                <!-- birthday -->
+                <div>
+                    <label for="" class="text-secondary color-light" >Your birthday*</label>
+                    <div class="flex-column">
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label>
+                            <input readonly="text" matInput [matDatepicker]="picker" [(ngModel)]="date" #inputdate="ngModel" required
+                            >
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                          <div class="error" *ngIf="inputdate.invalid && inputdate.touched">
+                            <span *ngIf="inputdate.errors?.['required']" class="text-danger"></span>
+                          </div>
+                          
+                    </div>
+                </div>
+                <!-- gender -->
+                <div>
+                    <label for="" class="text-secondary mt-1">Gender</label>
+                    <div class="text-dark">
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1"><span class="text-light">Male</span></mat-radio-button>
+                            <mat-radio-button id="radio" value="1"><span class="text-light">Female</span></mat-radio-button>
+                            <mat-radio-button id="radio" value="1"><span class="text-light">Other</span></mat-radio-button>
+                          </mat-radio-group>
+                    </div>
+                </div>
+                <!-- country and phone -->
+                <div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="" class="text-secondary mt-1">Country</label>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Select your Country</mat-label>
+                            <select matNativeControl id="mySelectId">
+                                <option value="">--Select--</option>
+                                <option value="india">India</option>
+                                <option value="united-states">United States</option>
+                                <option value="canada">Canada</option>
+                                <option value="australia">Australia</option>
+                                <option value="germany">Germany</option>
+                                <option value="france">France</option>
+                                <option value="japan">Japan</option>
+                                <option value="brazil">Brazil</option>
+                                <option value="south-africa">South Africa</option>
+                                <option value="china">China</option>
+                                <option value="russia">Russia</option>
+                                <option value="mexico">Mexico</option>
+                                <option value="italy">Italy</option>
+                                <option value="spain">Spain</option>
+                                <option value="south-korea">South Korea</option>
+                                <option value="argentina">Argentina</option>
+                                <option value="netherlands">Netherlands</option>
+                                <option value="sweden">Sweden</option>
+                                <option value="new-zealand">New Zealand</option>
+                                <option value="switzerland">Switzerland</option>
+                            </select>
+                          </mat-form-field>
+                    </div>
+                        </div>
+                        <div class="col">
+                            <label for="" class="text-secondary mt-1">Phone*</label>
+                            <form class="example-form">
+                                <mat-form-field class="example-full-width">
+                                  <mat-label></mat-label>
+                                  <input matInput placeholder="" >
+                                </mat-form-field>
+                              </form>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Bio -->
+                <div>
+                    <label for="" class="text-secondary mt-1">Bio</label>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                          <mat-label></mat-label>
+                          <input matInput placeholder="" >
+                        </mat-form-field>
+                      </form>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-light" [disabled]="registerForm.invalid">Submit</button>
+                <button class="btn btn-light mx-3 col-4">List</button>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h2 style="color: rgb(197, 8, 197);"><b>Account Details</b></h2>
+    
+            <div>
+                <!-- username -->
+                <div>
+                    <label for="" class="text-secondary" >Username*</label>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                          <input [(ngModel)]="uname" name="uname" #inputUser="ngModel" required pattern="[a-zA-Z@#_0-9]*" matInput placeholder="Username">
+                        </mat-form-field>
+                      </form>
+                      <div class="error" style="margin-top: -15px;" *ngIf="inputUser.invalid && inputUser.touched">
+                        <span *ngIf="inputUser.errors?.['required']" class="text-danger">Please enter your Username</span>
+                        <span *ngIf="inputUser.errors?.['pattern']" class="text-danger">Invalid Character</span>
+                      </div>                  
+                </div>
+                <!-- Email -->
+                <div>
+                    <label for="" class="text-secondary " >Email*</label>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                          <input [(ngModel)]="mail" #inputmail="ngModel" name="mail" required email matInput placeholder="" >
+                        </mat-form-field>
+                        <div *ngIf="inputmail.invalid && inputmail.touched" style="margin-top: -15px;">
+                            <span *ngIf="inputmail.errors?.['required']" class="text-danger">Please type your Email</span>
+                            <span *ngIf="inputmail.errors?.['email']" class="text-danger">Email Invalid</span>
+                        </div>
+                      </form>
+                </div>
+                <!-- password -->
+                <div>
+                    <label for="" class="text-secondary" >Password*</label>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                          <input type="password" name="pswd" [(ngModel)]="pswd" #inputpswd="ngModel" required minlength="6" matInput placeholder="" >
+                        </mat-form-field>
+                        <div *ngIf="inputpswd.invalid && inputpswd.touched" style="margin-top: -15px;">
+                            <span *ngIf="inputpswd.errors?.['required']" class="text-danger">Password Required</span>
+                            <span *ngIf="inputpswd.errors?.['minlength']"class="text-danger">Check Password</span>
+                        </div>
+                      </form>
+                </div>
+                <!-- confirm pswd -->
+                <div>
+                    <label for="" class="text-secondary" >Confirm Password*</label>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                          <input type="password" name="pswd2" [(ngModel)]="pswd2" #inputpswd2="ngModel" required minlength="6" matInput placeholder="" >
+                        </mat-form-field>
+                        <div *ngIf="inputpswd2.invalid && inputpswd2.touched" style="margin-top: -15px;">
+                            <span *ngIf="inputpswd2.errors?.['required']" class="text-danger">Password Required</span>
+                            <span *ngIf="inputpswd2.errors?.['minlength']"class="text-danger">Check Password</span>
+                        </div>
+                      </form>
+                </div>
+                <div>
+                    <mat-checkbox class="example-margin mt-3">I accept the terms and conditions</mat-checkbox>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-5">
-        <h3><b>User Details</b></h3>
-    </div>
-    <div class="col-md-5">
-        <h3><b>Account Details</b></h3>
-    </div>
-</div>
+</form>
