@@ -12,8 +12,12 @@
     
   }
   @media screen and (min-width: 180px) and (max-width: 770px) {
-    #radio {
+    #radio1 {
         margin-left: 0px;
+    }
+    #radio2{
+      margin-left: 0px;
+
     }
 }
   
